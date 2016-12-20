@@ -64,6 +64,7 @@ void loop() {
   Serial.println(scale.get_units(10)/10, 1);
   tartiVerisi = scale.get_units(2)/10, 1 ;
   scale.power_down();			        // put the ADC in sleep mode
+  send_data(tartiVerisi);
   delay(1000);
   scale.power_up();
 }
@@ -84,7 +85,7 @@ void send_data(float data){
   }
   
  String yollanacakkomut = "GET /update?key=E0P82I3TVW0KXPKD&field1=";   // Burada 64T0OS3R1OEAYUML yazan kısım bizim API Key den aldığımız Key. Siz buraya kendi keyinizi yazacaksınız.
- yollanacakkomut += (int(data));                                      // Burada ise sıcaklığımızı float değişkenine atayarak yollanacakkomut değişkenine ekliyoruz.
+ yollanacakkomut += (float(data));                                      // Burada ise sıcaklığımızı float değişkenine atayarak yollanacakkomut değişkenine ekliyoruz.
  yollanacakkomut += "\r\n\r\n";                                             // ESP modülümüz ile seri iletişim kurarken yazdığımız komutların modüle iletilebilmesi için Enter komutu yani
   delay(3000);                                                                                // /r/n komutu kullanmamız gerekiyor.
  
