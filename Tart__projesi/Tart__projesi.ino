@@ -48,13 +48,11 @@ void loop() {
      scale.tare();
      beep(200);
   }
-  
-  
   Serial.print("one reading:\t");
   Serial.print(scale.get_units(), 1);
   Serial.print("\t| average:\t");
   Serial.println(scale.get_units(10)/10, 1);
-  tartiVerisi = scale.get_units(10)/10, 1 ;
+  tartiVerisi = scale.get_units(2)/10, 1 ;
   scale.power_down();			        // put the ADC in sleep mode
   delay(1000);
   scale.power_up();
